@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList, KeyboardAvoidingView } from 'react-native';
+import { View, FlatList, KeyboardAvoidingView, Alert } from 'react-native';
 import { Button, Input, ListItem, Header, Avatar, SearchBar, Text } from 'react-native-elements';
 import * as firebase from 'firebase';
 import styles from '../styles/styles';
@@ -13,13 +13,19 @@ export default function SavedRecipes({ route, navigation }) {
     }, []);
     
     const fetchRecipes = () => {
-        firebase.database().ref('recipes/').on('value', snapshot => {
-            if(snapshot.exists()) {
-                const data = snapshot.val();
-                const items = Object.values(data);
-                setRecipes(items);
-            }
-        })
+        try{
+            firebase.database().ref('recipes/').on('value', snapshot => {
+                if(snapshot.exists()) {
+                    const data = snapshot.val();
+                    const items = Object.values(data);
+                    setRecipes(items);
+                }
+            })
+        } catch (error) {
+            console.log(error);
+            Alert.alert('No database connection!', 'There seems to be a problem with the database connection.');
+        }
+        
         
     }
 

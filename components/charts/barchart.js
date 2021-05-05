@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, FlatList, ActivityIndicator, Linking, Dimensions } from 'react-native';
-import styles from "../styles/styles";
+import styles from "../../styles/styles";
 import { BarChart } from "react-native-chart-kit";
 
 export default function Bar(props) {

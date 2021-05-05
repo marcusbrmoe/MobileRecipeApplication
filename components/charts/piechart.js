@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, FlatList, ActivityIndicator, Linking, Dimensions } from 'react-native';
-import styles from "../styles/styles";
+import styles from "../../styles/styles";
 import { PieChart } from "react-native-chart-kit";
 
 export default function Pie(props) {

@@ -9,14 +9,32 @@ export default function Recipe({ route, navigation }) {
     const recipe = route.params;
 
     const saveRecipe = () => {
-        firebase.database().ref().child("recipes").orderByChild("uri").equalTo(recipe.uri).once("value",snapshot => {
-            if (snapshot.exists()){
-                Alert.alert('Existing recipe', 'This recipe is already saved!')
+        try{
+            if(recipe.totalNutrients["SUGAR.added"] === undefined){
+                firebase.database().ref().child("recipes").orderByChild("uri").equalTo(recipe.uri).once("value", snapshot => {
+                    if (snapshot.exists()){
+                        Alert.alert('Existing recipe', 'This recipe is already saved!')
+                    } else {
+                        firebase.database().ref('recipes/'+recipe.label).set(recipe)
+                        .then(() => console.log('HELLO'))
+                        .catch(error => {
+                            console.log('HEEELOO ERROR')
+                            console.log(error);
+                            Alert.alert('Something went wrong!', 'The recipe is NOT saved!')
+                        });
+                        Alert.alert('Saved!', 'This recipe is now saved!')
+                    }
+                })
+                .catch((error) => {
+                    console.log('error' + error)
+                })
             } else {
-                firebase.database().ref('recipes/'+recipe.label).set(recipe);
-                Alert.alert('Saved!', 'This recipe is now saved!')
+                Alert.alert('NOT saved!', 'There is something wrong with the recipe.')
             }
-        });
+        } catch(error) {
+            console.log(error);
+        }
+        
     }
     
     const renderItem = ({item}) => (
