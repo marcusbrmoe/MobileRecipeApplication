@@ -9,6 +9,7 @@ import Recipe from './components/recipe';
 import Nutrition from './components/nutrition';
 import SavedRecipes from './components/savedrecipes';
 
+// Firebase connection configurations.
 const firebaseConfig = {
   apiKey: "AIzaSyBxOOj4r4dPaDaVk2JpCGcoH8GDUTTWOpE",
   authDomain: "recipelist-2fbf5.firebaseapp.com",
@@ -21,7 +22,10 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+// Render app with stack navigation. 
 export default function App() {
+
+  // Create stack navigator.
   const Stack = createStackNavigator();
 
   return (
@@ -44,6 +48,7 @@ export default function App() {
         <Stack.Screen 
           name="Saved Recipes" 
           component={SavedRecipes} 
+          options={() => ({title: 'Favorites'})}
         />
       </Stack.Navigator>
     </NavigationContainer>

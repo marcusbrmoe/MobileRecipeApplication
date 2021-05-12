@@ -11,31 +11,31 @@ export default function Recipe({ route, navigation }) {
     const recipe = route.params;
 
     // Save the recipe to the Firebase Realtime Database.
+    // There is a problems with recipes containing an object called "SUGAR.added". 
+    // It does not follow naming convetions and will not be accepted by Firebase. 
+    // As I have no need for the object, I just delete the object if it exists and saves the recipe as normal. 
     const saveRecipe = () => {
         try{
-            if(recipe.totalNutrients["SUGAR.added"] === undefined){
-                firebase.database().ref().child("recipes").orderByChild("uri").equalTo(recipe.uri).once("value", snapshot => {
-                    if (snapshot.exists()){
-                        Alert.alert('Existing recipe', 'This recipe is already saved!')
-                    } else {
-                        firebase.database().ref('recipes/'+recipe.label).set(recipe)
-                        .then(() => console.log('HELLO'))
-                        .catch(error => {
-                            console.log('HEEELOO ERROR')
-                            console.log(error);
-                            Alert.alert('Something went wrong!', 'The recipe is NOT saved!')
-                        });
-                        Alert.alert('Saved!', 'This recipe is now saved!') // Confirming the save. 
-                    }
-                })
-                .catch((error) => {
-                    console.log('error' + error)
-                })
-            } else {
-                Alert.alert('NOT saved!', 'There is something wrong with the recipe.')
-            }
+            if(recipe.totalNutrients["SUGAR.added"] !== undefined){
+                delete recipe.totalNutrients["SUGAR.added"];
+            } 
+            firebase.database().ref().child("recipes").orderByChild("uri").equalTo(recipe.uri).once("value", snapshot => {
+                if (snapshot.exists()){
+                    Alert.alert('Existing recipe', 'This recipe is already saved!')
+                } else {
+                    firebase.database().ref('recipes/'+recipe.label).set(recipe)
+                    .catch(error => {
+                        console.error(error);
+                        Alert.alert('Something went wrong!', 'The recipe is NOT saved!')
+                    });
+                    Alert.alert('Saved!', 'This recipe is now saved!') // Confirming the save. 
+                }
+            })
+            .catch((error) => {
+                console.error('error' + error)
+            })
         } catch(error) {
-            console.log(error);
+            console.error(error);
         }
         
     }

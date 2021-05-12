@@ -13,6 +13,7 @@ export default function SavedRecipes({ route, navigation }) {
         fetchRecipes();
     }, []);
 
+
     // Fetch all saved recipes from the Firebase Realtime Database. 
     const fetchRecipes = () => {
         try{
@@ -27,15 +28,25 @@ export default function SavedRecipes({ route, navigation }) {
             console.log(error);
             Alert.alert('No database connection!', 'There seems to be a problem with the database connection.');
         }
-        
-        
     }
 
     // Delete one single recipe from the Firebase Realtime Database. 
     const deleteRecipe = (item) => {
-        // CONFIRM DELETION!!!
-        firebase.database().ref('recipes/'+item.label).remove();
+        // Ask for confirmation of deletion choice. 
+        Alert.alert(
+            'Delete recipe?',
+            `Are you sure you want to delete ${item.label}`,
+            [
+                {text: 'NO', onPress: () => Alert.alert('Nothing deleted!', 'No recipe was deleted from the database'), style: 'cancel'},
+                {text: 'YES', onPress: () => {
+                    firebase.database().ref('recipes/'+item.label).remove();
+                    Alert.alert('Recipe deleted!', `${item.label} has been deleted from the database.`)
+                }},
+            ]
+        );
     }
+        
+    
 
     // Create an item for each recipe in the Firebase Realtime Database. 
     const renderItem = ({item}) => (
