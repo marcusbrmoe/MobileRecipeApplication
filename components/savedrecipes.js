@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList, KeyboardAvoidingView, Alert } from 'react-native';
-import { Button, Input, ListItem, Header, Avatar, SearchBar, Text } from 'react-native-elements';
+import { View, FlatList, Alert } from 'react-native';
+import { ListItem, Avatar, Text } from 'react-native-elements';
 import * as firebase from 'firebase';
 import styles from '../styles/styles';
 
+// Display your saved/favorite recipes. 
 export default function SavedRecipes({ route, navigation }) {
 
     const [recipes, setRecipes] = useState([]);
@@ -11,7 +12,8 @@ export default function SavedRecipes({ route, navigation }) {
     useEffect(() => {
         fetchRecipes();
     }, []);
-    
+
+    // Fetch all saved recipes from the Firebase Realtime Database. 
     const fetchRecipes = () => {
         try{
             firebase.database().ref('recipes/').on('value', snapshot => {
@@ -29,10 +31,13 @@ export default function SavedRecipes({ route, navigation }) {
         
     }
 
+    // Delete one single recipe from the Firebase Realtime Database. 
     const deleteRecipe = (item) => {
+        // CONFIRM DELETION!!!
         firebase.database().ref('recipes/'+item.label).remove();
     }
 
+    // Create an item for each recipe in the Firebase Realtime Database. 
     const renderItem = ({item}) => (
         <ListItem
             bottomDivider
@@ -66,7 +71,3 @@ export default function SavedRecipes({ route, navigation }) {
         </View>
     );
 }
-
-/*
-
-*/

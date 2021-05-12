@@ -3,10 +3,12 @@ import { View, FlatList, ActivityIndicator, Linking, Dimensions } from 'react-na
 import styles from "../../styles/styles";
 import { BarChart } from "react-native-chart-kit";
 
+// Display a bar chart of one recipe's nutrition values. 
 export default function Bar(props) {
 
     recipe = props.recipe;
 
+    // Set chart configurations. 
     const chartConfig = {
         backgroundGradientFrom: "#FFFFFF",
         backgroundGradientFromOpacity: 1,
@@ -19,6 +21,7 @@ export default function Bar(props) {
         barPercentage: 0.35,
     };
 
+    // Use the recipes data to set the datasets and labels used in the chart.
     const data = {
         labels: [
             recipe.totalNutrients.CHOLE.label,

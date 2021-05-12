@@ -1,5 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
+// Create a stylesheet for all components.  
 const styles = StyleSheet.create({
     container: {
         flex: 4,

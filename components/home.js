@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { View, FlatList, KeyboardAvoidingView } from 'react-native';
-import { Button, Input, ListItem, Header, Avatar, SearchBar, Text } from 'react-native-elements';
+import { Button, ListItem, Avatar, SearchBar, Text } from 'react-native-elements';
 import styles from '../styles/styles';
 import OverlayFilter from './overlay';
 
+// Home page with search and filter ability. Also, displays recipes and 
+// gives access to favorite recipes. 
 export default function Home({ navigation }) {
     const [data, setData] = useState([]);
     const [query, setQuery] = useState('');
@@ -18,6 +20,8 @@ export default function Home({ navigation }) {
         .catch(err => console.error(err))
     }
 
+    // Update the search text and fetch data. If no query params is saved (query = ''), 
+    // fetch with only one parameter. 
     const updateSearch = (text) => {
         setText(text);
         if (query === ''){
@@ -27,6 +31,7 @@ export default function Home({ navigation }) {
         }
     }
 
+    // Save params and fetch data. If params = '', fetch with only one parameter.
     const saveParams = (params) => {
         setQuery(params);
         if (params === '') {
@@ -53,6 +58,7 @@ export default function Home({ navigation }) {
         });
     }, [navigation]);
 
+    // Create list items for the flatlist. 
     const renderItem = ({item}) => (
         <ListItem
             bottomDivider

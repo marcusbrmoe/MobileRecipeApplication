@@ -3,10 +3,12 @@ import { View, FlatList, ActivityIndicator, Linking, Dimensions } from 'react-na
 import styles from "../../styles/styles";
 import { PieChart } from "react-native-chart-kit";
 
+// Display a pie chart of one recipe's nutrition values. 
 export default function Pie(props) {
 
     recipe = props.recipe;
 
+    // Set chart configurations. 
     const chartConfig = {
         backgroundGradientFrom: "#FFFFFF",
         backgroundGradientFromOpacity: 1,
@@ -17,6 +19,7 @@ export default function Pie(props) {
         useShadowColorFromDataset: false // optional
     };
 
+    // Use the recipes data to set the datasets and labels used in the chart.
     const data = [
         {
           name: "(g) Carbs",

@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { View, FlatList, KeyboardAvoidingView, TextInput } from 'react-native';
-import { Button, Input, ListItem, CheckBox, Text, Overlay, SearchBar } from 'react-native-elements';
+import React, { useState } from 'react';
+import { View, FlatList, KeyboardAvoidingView } from 'react-native';
+import { Button, Input, CheckBox, Text, Overlay } from 'react-native-elements';
 import styles from '../styles/styles';
 
+// Allowing for filtering recipes. 
 export default function OverlayFilter(props) {
 
     let query = '';
     const [visible, setVisible] = useState(false);
+
+    // Setting the base value for filter options and creating objects used for check-boxes in filtering. 
     const [calories, setCalories] = useState({maxCal: '', minCal: ''});
     const [ingredients, setIngredients] = useState('');
     const [diets, setDiets] = useState([
@@ -26,6 +29,8 @@ export default function OverlayFilter(props) {
         {id: 5, value: '&dishType=dessert',   name: 'Dessert',    isChecked: false},
     ]);
 
+    // Creating a query string from the selected and written parameters. 
+    // Send the string to home page and search. 
     const apply = () => {
 
         if (calories.maxCal !== '' && calories.minCal === '') {
@@ -56,6 +61,7 @@ export default function OverlayFilter(props) {
         query='';
     }
 
+    // Set all filters to not selected or empty strings respectively. 
     const removeFilters = () => {
         setCalories({maxCal: '', minCal: ''});
         setIngredients('');
@@ -74,10 +80,12 @@ export default function OverlayFilter(props) {
         props.saveParams('')
     }
 
+    // toggle the visibility of the (filter-) overlay.
     const toggleOverlay = () => {
         setVisible(!visible);
     };
     
+    // Handle changes in all checkbox-fields. 
     const handleChange = (index, setFunc, data) => {
         let newData = [...data];
         newData[index].isChecked = !newData[index].isChecked;
@@ -169,26 +177,3 @@ export default function OverlayFilter(props) {
         </View>
     );
 }
-
-/*
-                <CheckBox
-                    title={mealTypes.dinner.name}
-                    checked={mealTypes.dinner.isChecked}
-                    onPress={() => handleChange('dinner')}
-                />
-                <CheckBox
-                    title={mealTypes.lunch.name}
-                    checked={mealTypes.lunch.isChecked}
-                    onPress={() => handleChange('lunch')}
-                />
-                <CheckBox
-                    title={mealTypes.breakfast.name}
-                    checked={mealTypes.breakfast.isChecked}
-                    onPress={() => handleChange('breakfast')}
-                />
-                <CheckBox
-                    title={mealTypes.snack.name}
-                    checked={mealTypes.snack.isChecked}
-                    onPress={() => handleChange('snack')}
-                />
-*/

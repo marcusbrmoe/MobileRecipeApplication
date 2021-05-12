@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, FlatList, ActivityIndicator, Linking, Alert } from 'react-native';
 import { Text, Image, Button, ListItem, Avatar } from 'react-native-elements';
 import * as firebase from 'firebase';
 import styles from '../styles/styles';
 
+// Display the information of one selected recipe.  
 export default function Recipe({ route, navigation }) {
 
+    // Get the recipe data from route.params. 
     const recipe = route.params;
 
+    // Save the recipe to the Firebase Realtime Database.
     const saveRecipe = () => {
         try{
             if(recipe.totalNutrients["SUGAR.added"] === undefined){
@@ -22,7 +25,7 @@ export default function Recipe({ route, navigation }) {
                             console.log(error);
                             Alert.alert('Something went wrong!', 'The recipe is NOT saved!')
                         });
-                        Alert.alert('Saved!', 'This recipe is now saved!')
+                        Alert.alert('Saved!', 'This recipe is now saved!') // Confirming the save. 
                     }
                 })
                 .catch((error) => {
@@ -37,6 +40,7 @@ export default function Recipe({ route, navigation }) {
         
     }
     
+    // Creating items for the ingredient list. 
     const renderItem = ({item}) => (
         <ListItem
             bottomDivider
