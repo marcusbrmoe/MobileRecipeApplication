@@ -3,6 +3,8 @@ import { View, FlatList, KeyboardAvoidingView } from 'react-native';
 import { Button, ListItem, Avatar, SearchBar, Text } from 'react-native-elements';
 import styles from '../styles/styles';
 import OverlayFilter from './overlay';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 // Home page with search and filter ability. Also, displays recipes and 
 // gives access to favorite recipes. 
@@ -41,6 +43,7 @@ export default function Home({ navigation }) {
         }
     }
 
+    // Fetch data on load. 
     useEffect(() => {
         fetchData(text);
     }, [])
@@ -51,8 +54,12 @@ export default function Home({ navigation }) {
           headerRight: () => (
             <Button 
                 onPress={() => navigation.navigate('Saved Recipes')} 
-                title="Favorites" 
-                buttonStyle={{backgroundColor: 'green', marginRight: 10}}
+                buttonStyle={styles.favoritesbutton}
+                icon={<Icon
+                    name='star'
+                    size={22}
+                    color= 'green'
+                  />}
             />
           ),
         });
@@ -80,7 +87,7 @@ export default function Home({ navigation }) {
         <KeyboardAvoidingView
             behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
             style={styles.container}
-            keyboardVerticalOffset={-150}
+            keyboardVerticalOffset={100}
         >
             <SearchBar 
                 onChangeText={(text) => updateSearch(text)}

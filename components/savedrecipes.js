@@ -25,7 +25,7 @@ export default function SavedRecipes({ route, navigation }) {
                 }
             })
         } catch (error) {
-            console.log(error);
+            console.error(error);
             Alert.alert('No database connection!', 'There seems to be a problem with the database connection.');
         }
     }

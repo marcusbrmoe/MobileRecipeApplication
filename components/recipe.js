@@ -11,7 +11,7 @@ export default function Recipe({ route, navigation }) {
     const recipe = route.params;
 
     // Save the recipe to the Firebase Realtime Database.
-    // There is a problems with recipes containing an object called "SUGAR.added". 
+    // There is a problems with recipes containing an object property called "SUGAR.added". 
     // It does not follow naming convetions and will not be accepted by Firebase. 
     // As I have no need for the object, I just delete the object if it exists and saves the recipe as normal. 
     const saveRecipe = () => {

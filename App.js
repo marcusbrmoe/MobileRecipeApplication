@@ -20,7 +20,10 @@ const firebaseConfig = {
   appId: "1:822629360275:web:0038a0c04186bb801a2366"
 };
 
-firebase.initializeApp(firebaseConfig);
+// Initializes firebase, if app is not already existing.
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 // Render app with stack navigation. 
 export default function App() {

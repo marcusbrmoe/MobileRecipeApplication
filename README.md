@@ -13,4 +13,5 @@ The mobile application's purpose is to search and filter among many available re
 * React Native Elements
 * React Native Chart Kit
 * React Navigation Stack
+* React Native Vector Icons
 

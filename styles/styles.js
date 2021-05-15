@@ -48,10 +48,17 @@ const styles = StyleSheet.create({
     },
     barchartstyle: {
         flex: 2,
-        padding:15,
+        padding: 15,
     },
     piechartstyle: {
         flex: 2,
+    },
+    favoritesbutton: {
+        marginRight: 10, 
+        borderWidth: 1, 
+        borderColor: 'green', 
+        backgroundColor: 'lightblue', 
+        borderRadius: 10,
     },
 });
 
