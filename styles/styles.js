@@ -30,6 +30,10 @@ const styles = StyleSheet.create({
         marginTop: 20,
         width: Dimensions.get("window").width
     },
+    ingredientlist: {
+        flex: 3,
+        marginTop: 20,
+    },
     recipebuttoncontainer: {
         flex: 1,
         flexDirection: 'row',
@@ -58,6 +62,10 @@ const styles = StyleSheet.create({
         borderWidth: 1, 
         borderColor: 'green', 
         backgroundColor: 'lightblue', 
+        borderRadius: 10,
+    },
+    savebutton: {
+        marginRight: 10, 
         borderRadius: 10,
     },
 });

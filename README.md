@@ -8,6 +8,7 @@ The mobile application's purpose is to search and filter among many available re
 * Expo
 * Fetch
 * Firebase
+* Expo Speech
 * Edamam REST API
 * React Native App
 * React Native Elements
