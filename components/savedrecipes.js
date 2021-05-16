@@ -46,8 +46,6 @@ export default function SavedRecipes({ route, navigation }) {
         );
     }
         
-    
-
     // Create an item for each recipe in the Firebase Realtime Database. 
     const renderItem = ({item}) => (
         <ListItem
