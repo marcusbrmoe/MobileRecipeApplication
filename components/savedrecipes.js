@@ -58,6 +58,7 @@ export default function SavedRecipes({ route, navigation }) {
                 size="large"
             />
             <ListItem.Content>
+                <ListItem.Subtitle style={{color: 'gray'}}>Press and hold to delete</ListItem.Subtitle>
                 <ListItem.Title>{item.label}</ListItem.Title>
                 <ListItem.Subtitle>{item.source}</ListItem.Subtitle>
             </ListItem.Content>
