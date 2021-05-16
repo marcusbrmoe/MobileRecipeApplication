@@ -26,8 +26,10 @@ export default function Home({ navigation }) {
     // fetch with only one parameter. 
     const updateSearch = (text) => {
         setText(text);
-        if (query === ''){
+        if (query === '' && text === ''){
             fetchData(text);
+        } else if (query === '' && text !== ''){
+            fetchData(text, '');
         } else {
             fetchData(text, query);
         }

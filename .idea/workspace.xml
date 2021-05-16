@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a49743a7-860e-46b3-b7e8-977a3d5d2608" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +29,7 @@
       <command value="yarn start" />
       <command value="open RecipeApp" />
       <command value="expo start" />
+      <command value="npm start" />
     </option>
   </component>
   <component name="SvnConfiguration">
@@ -47,17 +46,21 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="110" y="120" width="1060" height="480" key="AVDManager" timestamp="1618401589264">
+    <state x="95" y="15" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621163981903">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="110" y="120" width="1060" height="480" key="AVDManager/0.0.1280.720@0.0.1280.720" timestamp="1618401589264" />
+    <state x="95" y="15" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.720@0.0.1280.720" timestamp="1621163981903" />
+    <state x="69" y="159" width="1060" height="480" key="AVDManager" timestamp="1621164356445">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="69" y="159" width="1060" height="480" key="AVDManager/0.0.1280.720@0.0.1280.720" timestamp="1621164356445" />
     <state x="142" y="5" key="SettingsEditor" timestamp="1617692606083">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="142" y="5" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1617692606083" />
-    <state x="297" y="163" width="672" height="677" key="run.anything.popup" timestamp="1617692652541">
+    <state x="297" y="163" width="672" height="677" key="run.anything.popup" timestamp="1621164006592">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="297" y="163" width="672" height="677" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1617692652541" />
+    <state x="297" y="163" width="672" height="677" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1621164006592" />
   </component>
 </project>
